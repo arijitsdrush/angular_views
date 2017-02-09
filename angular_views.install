@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Schema functions for the angular_views module.
+ */
+
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup dbtng_example
+ */
+function angular_views_schema() {
+  $schema['angular_views'] = array(
+    'description' => 'Stores data for angular views module',
+    'fields' => array(
+      'aid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique angular views content id.',
+      ),
+      'url' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Page Url to show data.',
+      ),
+      'service_backend' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Json backend for service.',
+      ),
+      'protocol' => array(
+        'type' => 'varchar',
+        'length' => 5,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Protocol on which data will be called.',
+      ),
+    ),
+    'primary key' => array('aid'),
+  );
+
+  return $schema;
+}

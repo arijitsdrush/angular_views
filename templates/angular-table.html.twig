@@ -1,0 +1,14 @@
+<div ng-app="myApp" ng-controller="viewsCtrl"> 
+<table>
+	<tr ng-repeat="(key,val) in parentrows|limitTo:1">
+	<th ng-repeat="(subkey,subval) in val">
+	{{ '{{subkey}}' }}
+	</th>
+  </th>
+  <tr ng-repeat="(key,val) in parentrows">
+	<td ng-repeat="(subkey,subval) in val">
+	{{ '{{subval}}' }}
+	</td>
+  </tr>
+</table>
+</div>

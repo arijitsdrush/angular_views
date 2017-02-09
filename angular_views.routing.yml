@@ -1,0 +1,15 @@
+angular_views_user:
+  path: 'angular-views/page-example'
+  defaults:
+    _controller: '\Drupal\angular_views\Controller\AngularViewsController::index'
+    _title: 'Angular Example'
+  requirements:
+    _permission: 'access angular ui page'
+
+angular_views_admin:
+  path: 'admin/config/user-interface/angular-views-management'
+  defaults:
+    _form:  '\Drupal\angular_views\Form\AngularViews'
+    _title: 'Manage Angular Views'
+  requirements:
+    _permission: 'access angular admin page'

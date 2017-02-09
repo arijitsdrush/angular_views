@@ -1,0 +1,10 @@
+angular:
+  remote: https://github.com/angular/angular.js
+  version: 1.4.8
+  license:
+    name: MIT
+    url: https://github.com/angular/angular.js/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js: { type: external, minified: true }
+    js/angular_views.js: {}

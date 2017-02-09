@@ -1,0 +1,10 @@
+angular_views.userui:
+  title: Angular js Example
+  route_name: angular_views_user
+  expanded: TRUE
+angular_views.adminui:
+  title: 'Set Views Backend'
+  description: 'Manage views backend which will be converted to angular views'
+  parent: system.admin_config_ui
+  route_name: angular_views_admin
+  weight: 100
