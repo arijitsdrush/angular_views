@@ -1,0 +1,14 @@
+.angularViews-td-head{
+	text-transform: capitalize;
+	padding: 12px;
+}
+.animate-search{
+	box-sizing: border-box;
+    border: 2px solid #ccc;
+	padding: 12px;
+	-webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.animate-search:focus {
+    width: 100%;
+}
