@@ -6,5 +6,10 @@ angular:
     url: https://github.com/angular/angular.js/blob/master/LICENSE
     gpl-compatible: true
   js:
-    https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js: { type: external, minified: true }
-    js/angular_views.js: {}
+    https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js: { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.4.8/angular-sanitize.min.js: { type: external, minified: true }
+    libraries/js/angular_views.js: {}
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css: { type: external}
+      libraries/css/angular_views.css: {}

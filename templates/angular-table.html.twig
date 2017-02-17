@@ -1,14 +1,23 @@
-<div ng-app="myApp" ng-controller="viewsCtrl"> 
-<table>
-	<tr ng-repeat="(key,val) in parentrows|limitTo:1">
-	<th ng-repeat="(subkey,subval) in val">
+<section ng-app="angularViews" ng-controller="viewsCtrl" class="angularViews-container">
+<section ng-hide="hide_loader" class="angularViews-center">
+<i class="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
+</section>
+<section ng-show="show_result_success">
+<input ng-model="searchText" placeholder="Search .." class="animate-search">
+	<table class="angularViews-parent-table">
+		<tr ng-repeat="(key,val) in parentrows|limitTo:1">
+			<th ng-repeat="(subkey,subval) in val" class="angularViews-td-head">
 	{{ '{{subkey}}' }}
 	</th>
-  </th>
-  <tr ng-repeat="(key,val) in parentrows">
-	<td ng-repeat="(subkey,subval) in val">
-	{{ '{{subval}}' }}
-	</td>
-  </tr>
-</table>
-</div>
+		</th>
+		<tr ng-repeat="(key,val) in parentrows | filter:searchText ">
+			<td ng-repeat="(subkey,subval) in val">
+				<span class="angularViews-row-val" ng-bind-html="subval"></span>
+			</td>
+		</tr>
+	</table>
+	</section>
+<section ng-show="show_result_fail">
+	<strong>Sorry!</strong> Unable to access data.
+</section>
+</section>

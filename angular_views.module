@@ -59,7 +59,16 @@ function angular_views_help($route_name, RouteMatchInterface $route_match) {
  * @} End of "defgroup page_example".
  */
 function angular_views_page_attachments(array &$attachments) {
+   
+   $query = \Drupal::database()->select('angular_views','av');
+   $query->fields('av',array('service_backend'));
+   $query->condition('av.url', \Drupal::request()->getRequestUri());
+   $table_data = $query->execute()->fetchAssoc();
+   
    $attachments['#attached']['library'][] = 'angular_views/angular';
+   $attachments['#attached']['drupalSettings']['angularViews'] = $table_data;
+   
+   
 }
 
 /**

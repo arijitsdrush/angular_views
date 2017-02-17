@@ -1,10 +1,5 @@
-angular_views_user:
-  path: 'angular-views/page-example'
-  defaults:
-    _controller: '\Drupal\angular_views\Controller\AngularViewsController::index'
-    _title: 'Angular Example'
-  requirements:
-    _permission: 'access angular ui page'
+route_callbacks:
+  - '\Drupal\angular_views\Routing\AngularViewsGenerateRoutes::routes'
 
 angular_views_admin:
   path: 'admin/config/user-interface/angular-views-management'

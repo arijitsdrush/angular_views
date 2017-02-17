@@ -14,206 +14,7 @@ use Drupal\Core\Url;
  */
 class AngularViews extends FormBase {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function buildForm(array $form, FormStateInterface $form_state) {
-	
-	$current_protocol = explode('/',$_SERVER['SERVER_PROTOCOL']);
-	
-	// Select Protocol To communicate with.
-    $form['protocol'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Select Backend Service protocol'),
-      '#options' => [
-        'http' => $this->t('HTTP://'),
-        'https' => $this->t('HTTPS://'),
-      ],
-      '#empty_option' => $this->t('- Select -'),
-      '#description' => $this->t('Select Backend Service protocol on which angular will get request '),
-	  '#required' => TRUE,
-    ];
-	
-	// Textfield.
-    $form['page_url'] = [
-      '#type' => 'textfield',
-      '#title' => t('Frontend display URL'),
-      '#size' => 60,
-      '#maxlength' => 128,
-      '#description' => $this->t('Enter URL where you want to display Angular Data Table'),
-	  '#required' => TRUE,
-    ];
-	
-	// Enter Views URL.
-    $form['backend_url'] = [
-      '#type' => 'textfield',
-      '#title' => t('Backend JSON URL'),
-      '#size' => 60,
-      '#maxlength' => 128,
-      '#description' => $this->t('Enter views URL from where JSON will be supplied '),
-	  '#required' => TRUE,
-    ];
-	
-	//
-/*	
-    // CheckBoxes.
-    $form['tests_taken'] = [
-      '#type' => 'checkboxes',
-      '#options' => ['SAT' => t('SAT'), 'ACT' => t('ACT')],
-      '#title' => $this->t('What standardized tests did you take?'),
-      '#description' => 'Checkboxes, #type = checkboxes',
-    ];
-
-    // Color.
-    $form['color'] = [
-      '#type' => 'color',
-      '#title' => $this->t('Color'),
-      '#default_value' => '#ffffff',
-      '#description' => 'Color, #type = color',
-    ];
-
-    // Date.
-    $form['expiration'] = [
-      '#type' => 'date',
-      '#title' => $this->t('Content expiration'),
-      '#default_value' => ['year' => 2020, 'month' => 2, 'day' => 15],
-      '#description' => 'Date, #type = date',
-    ];
-
-    // Email.
-    $form['email'] = [
-      '#type' => 'email',
-      '#title' => $this->t('Email'),
-      '#description' => 'Email, #type = email',
-    ];
-
-    // Number.
-    $form['quantity'] = [
-      '#type' => 'number',
-      '#title' => t('Quantity'),
-      '#description' => $this->t('Number, #type = number'),
-    ];
-
-    // Password.
-    $form['password'] = [
-      '#type' => 'password',
-      '#title' => $this->t('Password'),
-      '#description' => 'Password, #type = password',
-    ];
-
-    // Password Confirm.
-    $form['password_confirm'] = [
-      '#type' => 'password_confirm',
-      '#title' => $this->t('New Password'),
-      '#description' => $this->t('PasswordConfirm, #type = password_confirm'),
-    ];
-
-    // Range.
-    $form['size'] = [
-      '#type' => 'range',
-      '#title' => t('Size'),
-      '#min' => 10,
-      '#max' => 100,
-      '#description' => $this->t('Range, #type = range'),
-    ];
-
-    // Radios.
-    $form['settings']['active'] = [
-      '#type' => 'radios',
-      '#title' => t('Poll status'),
-      '#options' => [0 => $this->t('Closed'), 1 => $this->t('Active')],
-      '#description' => $this->t('Radios, #type = radios'),
-    ];
-
-    // Search.
-    $form['search'] = [
-      '#type' => 'search',
-      '#title' => $this->t('Search'),
-      '#description' => $this->t('Search, #type = search'),
-    ];
-
-    // Select.
-    $form['favorite'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Favorite color'),
-      '#options' => [
-        'red' => $this->t('Red'),
-        'blue' => $this->t('Blue'),
-        'green' => $this->t('Green'),
-      ],
-      '#empty_option' => $this->t('-select-'),
-      '#description' => $this->t('Select, #type = select'),
-    ];
-
-    // Tel.
-    $form['phone'] = [
-      '#type' => 'tel',
-      '#title' => $this->t('Phone'),
-      '#description' => $this->t('Tel, #type = tel'),
-    ];
-
-    // TableSelect.
-    $options = [
-      1 => ['first_name' => 'Indy', 'last_name' => 'Jones'],
-      2 => ['first_name' => 'Darth', 'last_name' => 'Vader'],
-      3 => ['first_name' => 'Super', 'last_name' => 'Man'],
-    ];
-
-    $header = [
-      'first_name' => t('First Name'),
-      'last_name' => t('Last Name'),
-    ];
-
-    $form['table'] = [
-      '#type' => 'tableselect',
-      '#title' => $this->t('Users'),
-      '#header' => $header,
-      '#options' => $options,
-      '#empty' => t('No users found'),
-    ];
-
-    // Textarea.
-    $form['text'] = [
-      '#type' => 'textarea',
-      '#title' => $this->t('Text'),
-      '#description' => $this->t('Textarea, #type = textarea'),
-    ];
-
-    // Textfield.
-    $form['subject'] = [
-      '#type' => 'textfield',
-      '#title' => t('Subject'),
-      '#size' => 60,
-      '#maxlength' => 128,
-      '#description' => $this->t('Textfield, #type = textfield'),
-    ];
-
-    // Weight.
-    $form['weight'] = [
-      '#type' => 'weight',
-      '#title' => t('Weight'),
-      '#delta' => 10,
-      '#description' => $this->t('Weight, #type = weight'),
-    ];*/
-
-    // Group submit handlers in an actions element with a key of "actions" so
-    // that it gets styled correctly, and so that other modules may add actions
-    // to the form.
-    $form['actions'] = [
-      '#type' => 'actions',
-    ];
-
-    // Add a submit button that handles the submission of the form.
-    $form['actions']['submit'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Submit'),
-      '#description' => $this->t('Submit, #type = submit'),
-    ];
-
-    return $form;
-  }
-
-  /**
+	/**
    * {@inheritdoc}
    */
   public function getFormId() {
@@ -223,17 +24,139 @@ class AngularViews extends FormBase {
   /**
    * {@inheritdoc}
    */
+  public function buildForm(array $form, FormStateInterface $form_state) {
+	
+	$current_protocol = explode('/',$_SERVER['SERVER_PROTOCOL']);
+	
+	$form['form_container'] = array(
+	'#type' => 'fieldset',
+	'#title' => $this->t('Set Angular views page'),
+	'#weight' => -1,
+	);
+	
+	// Select Protocol To communicate with.
+    $form['form_container']['protocol'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Select Backend Service protocol'),
+      '#options' => [
+        'http' => $this->t('HTTP://'),
+        'https' => $this->t('HTTPS://'),
+      ],
+      '#empty_option' => $this->t('- Select -'),
+      '#description' => $this->t('Select Backend Service protocol on which angular will get request '),
+	  '#required' => ($form_state->getValue('protocol')!= NULL ? $form_state->getValue('protocol'):$_SERVER['HTTP_HOST']),
+	  '#default_value' => 'http'
+    ];
+	
+	// Textfield.
+    $form['form_container']['page_url'] = [
+      '#type' => 'textfield',
+      '#title' => t('Dispaly URL alias'),
+      '#size' => 60,
+      '#maxlength' => 128,
+      '#description' => $this->t('Specify a path by which this UI can be accessed. For example, type "/angular-view" if you want to display it at URL: '.$GLOBALS['base_url'].'/angular-view'),
+	  '#required' => TRUE,
+    ];
+	
+	// Enter JSON backend URL.
+    $form['form_container']['backend_url'] = [
+      '#type' => 'textfield',
+      '#title' => t('Backend JSON URL alias'),
+      '#size' => 60,
+      '#maxlength' => 128,
+      '#description' => $this->t('Specify a path by which JSON data can be accessed. For example, type "/json-service" if your JSON data is showed at URL: '.$GLOBALS['base_url'].'/json-service'),
+	  '#required' => TRUE,
+    ];
+
+
+    // Add a submit button that handles the submission of the form.
+    $form['form_container']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Submit'),
+      '#description' => $this->t('Submit, #type = submit'),
+    ];
+	
+	 $header = [
+      array('data' => $this->t('URL'), 'field' => 'url', 'sort' => 'asc'),
+      array('data' => $this->t('Service Backend'),'field' => 'service_backend'),
+	  array('data' => $this->t('Edit')),
+	  array('data' => $this->t('Delete')),
+    ];
+	
+	$edit_l = \Drupal::l(t('Edit'), Url::fromUri('internal:/config/user-interface/angular-views-management/edit'));
+	$del_l = \Drupal::l(t('Delete'), Url::fromUri('internal:/config/user-interface/angular-views-management/delete'));
+	
+    $query = \Drupal::database()->select('angular_views','av');
+    $query->fields('av', array('url'));
+	$query->fields('av', array('service_backend'));
+	// The actual action of sorting the rows is here.
+    $table_sort = $query->extend('Drupal\Core\Database\Query\TableSortExtender')
+                        ->orderByHeader($header);
+	 // Limit the rows to 10 for each page.
+    $pager = $table_sort->extend('Drupal\Core\Database\Query\PagerSelectExtender')
+                        ->limit(10);
+    $result = $pager->execute();
+	
+	// Populate the rows.
+    $rows = array();
+    foreach($result as $row) {
+      $rows[] = ['data' => [
+        'url' => $GLOBALS['base_url'].$row->url,
+        'service_backend' => $row->service_backend,
+		'edit' => $edit_l,
+		'del' => $del_l,
+      ]];
+    }
+
+	
+	// Generate the table.
+    $build['config_table'] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+    ];
+ 
+    // Finally add the pager.
+    $build['pager'] = [
+      '#type' => 'pager'
+    ];
+	
+	
+	
+	$form['table'] = [
+	'#markup' => drupal_render($build),
+	'#weight' => 0,
+	];
+    return $form;
+  }
+
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+  
+	if($form_state->getValue('page_url')!= NULL && substr($form_state->getValue('page_url'),0,1)!="/"){
+		$form_state->setErrorByName('page_url', t('Dispaly URL alias needs to start with a slash.'));
+	}elseif($form_state->getValue('backend_url')!= NULL && substr($form_state->getValue('backend_url'),0,1)!="/"){
+		$form_state->setErrorByName('backend_url', t('Backend JSON URL alias needs to start with a slash.'));
+	}
+  
+ }
+  
+  
+
+  /**
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Find out what was submitted.
 	
 	db_insert('angular_views')->fields(
 	  array(
-		'url' => $form_state->getValue('page_url'),
 		'protocol' => $form_state->getValue('protocol'),
+		'url' => $form_state->getValue('page_url'),
 		'service_backend' => $form_state->getValue('backend_url'),
 	  )
 	)->execute();
-	
+	drupal_flush_all_caches();
+	drupal_set_message(t('Angular display created successfully.'), 'status');
   }
 
 }
